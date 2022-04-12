@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.learning_prediction_client.mapper.MoocDataMapper">
+  <resultMap id="BaseResultMap" type="com.example.learning_prediction_client.entity.MoocData">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code_module" jdbcType="VARCHAR" property="codeModule" />
+    <result column="code_presentation" jdbcType="VARCHAR" property="codePresentation" />
+    <result column="id_student" jdbcType="VARCHAR" property="idStudent" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="highest_education" jdbcType="VARCHAR" property="highestEducation" />
+    <result column="imd_band" jdbcType="VARCHAR" property="imdBand" />
+    <result column="age_band" jdbcType="VARCHAR" property="ageBand" />
+    <result column="num_of_prev_attempts" jdbcType="VARCHAR" property="numOfPrevAttempts" />
+    <result column="studied_credits" jdbcType="VARCHAR" property="studiedCredits" />
+    <result column="disability" jdbcType="VARCHAR" property="disability" />
+    <result column="final_result" jdbcType="VARCHAR" property="finalResult" />
+    <result column="module_presentation_length" jdbcType="VARCHAR" property="modulePresentationLength" />
+    <result column="sum_click" jdbcType="VARCHAR" property="sumClick" />
+    <result column="score" jdbcType="REAL" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code_module, code_presentation, id_student, gender, region, highest_education,
+    imd_band, age_band, num_of_prev_attempts, studied_credits, disability, final_result,
+    module_presentation_length, sum_click, score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mooc_data
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mooc_data
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.learning_prediction_client.entity.MoocData">
+    insert into mooc_data (id, code_module, code_presentation,
+      id_student, gender, region,
+      highest_education, imd_band, age_band,
+      num_of_prev_attempts, studied_credits, disability,
+      final_result, module_presentation_length,
+      sum_click, score)
+    values (#{id,jdbcType=BIGINT}, #{codeModule,jdbcType=VARCHAR}, #{codePresentation,jdbcType=VARCHAR},
+      #{idStudent,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR},
+      #{highestEducation,jdbcType=VARCHAR}, #{imdBand,jdbcType=VARCHAR}, #{ageBand,jdbcType=VARCHAR},
+      #{numOfPrevAttempts,jdbcType=VARCHAR}, #{studiedCredits,jdbcType=VARCHAR}, #{disability,jdbcType=VARCHAR},
+      #{finalResult,jdbcType=VARCHAR}, #{modulePresentationLength,jdbcType=VARCHAR},
+      #{sumClick,jdbcType=VARCHAR}, #{score,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.learning_prediction_client.entity.MoocData">
+    insert into mooc_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="codeModule != null">
+        code_module,
+      </if>
+      <if test="codePresentation != null">
+        code_presentation,
+      </if>
+      <if test="idStudent != null">
+        id_student,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="region != null">
+        region,
+      </if>
+      <if test="highestEducation != null">
+        highest_education,
+      </if>
+      <if test="imdBand != null">
+        imd_band,
+      </if>
+      <if test="ageBand != null">
+        age_band,
+      </if>
+      <if test="numOfPrevAttempts != null">
+        num_of_prev_attempts,
+      </if>
+      <if test="studiedCredits != null">
+        studied_credits,
+      </if>
+      <if test="disability != null">
+        disability,
+      </if>
+      <if test="finalResult != null">
+        final_result,
+      </if>
+      <if test="modulePresentationLength != null">
+        module_presentation_length,
+      </if>
+      <if test="sumClick != null">
+        sum_click,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="codeModule != null">
+        #{codeModule,jdbcType=VARCHAR},
+      </if>
+      <if test="codePresentation != null">
+        #{codePresentation,jdbcType=VARCHAR},
+      </if>
+      <if test="idStudent != null">
+        #{idStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="imdBand != null">
+        #{imdBand,jdbcType=VARCHAR},
+      </if>
+      <if test="ageBand != null">
+        #{ageBand,jdbcType=VARCHAR},
+      </if>
+      <if test="numOfPrevAttempts != null">
+        #{numOfPrevAttempts,jdbcType=VARCHAR},
+      </if>
+      <if test="studiedCredits != null">
+        #{studiedCredits,jdbcType=VARCHAR},
+      </if>
+      <if test="disability != null">
+        #{disability,jdbcType=VARCHAR},
+      </if>
+      <if test="finalResult != null">
+        #{finalResult,jdbcType=VARCHAR},
+      </if>
+      <if test="modulePresentationLength != null">
+        #{modulePresentationLength,jdbcType=VARCHAR},
+      </if>
+      <if test="sumClick != null">
+        #{sumClick,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.learning_prediction_client.entity.MoocData">
+    update mooc_data
+    <set>
+      <if test="codeModule != null">
+        code_module = #{codeModule,jdbcType=VARCHAR},
+      </if>
+      <if test="codePresentation != null">
+        code_presentation = #{codePresentation,jdbcType=VARCHAR},
+      </if>
+      <if test="idStudent != null">
+        id_student = #{idStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        highest_education = #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="imdBand != null">
+        imd_band = #{imdBand,jdbcType=VARCHAR},
+      </if>
+      <if test="ageBand != null">
+        age_band = #{ageBand,jdbcType=VARCHAR},
+      </if>
+      <if test="numOfPrevAttempts != null">
+        num_of_prev_attempts = #{numOfPrevAttempts,jdbcType=VARCHAR},
+      </if>
+      <if test="studiedCredits != null">
+        studied_credits = #{studiedCredits,jdbcType=VARCHAR},
+      </if>
+      <if test="disability != null">
+        disability = #{disability,jdbcType=VARCHAR},
+      </if>
+      <if test="finalResult != null">
+        final_result = #{finalResult,jdbcType=VARCHAR},
+      </if>
+      <if test="modulePresentationLength != null">
+        module_presentation_length = #{modulePresentationLength,jdbcType=VARCHAR},
+      </if>
+      <if test="sumClick != null">
+        sum_click = #{sumClick,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.learning_prediction_client.entity.MoocData">
+    update mooc_data
+    set code_module = #{codeModule,jdbcType=VARCHAR},
+      code_presentation = #{codePresentation,jdbcType=VARCHAR},
+      id_student = #{idStudent,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      highest_education = #{highestEducation,jdbcType=VARCHAR},
+      imd_band = #{imdBand,jdbcType=VARCHAR},
+      age_band = #{ageBand,jdbcType=VARCHAR},
+      num_of_prev_attempts = #{numOfPrevAttempts,jdbcType=VARCHAR},
+      studied_credits = #{studiedCredits,jdbcType=VARCHAR},
+      disability = #{disability,jdbcType=VARCHAR},
+      final_result = #{finalResult,jdbcType=VARCHAR},
+      module_presentation_length = #{modulePresentationLength,jdbcType=VARCHAR},
+      sum_click = #{sumClick,jdbcType=VARCHAR},
+      score = #{score,jdbcType=REAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getAllData" resultMap="BaseResultMap">
+    select
+        *
+    from mooc_data
+    limit 50
+  </select>
+</mapper>
